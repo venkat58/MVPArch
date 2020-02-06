@@ -25,17 +25,12 @@ class MVCController(mvcModelImplementor: MVCModelImplementor, mvcViewImplementor
             mvcView.updateViewOnAdd(mvcModel.getAllTODOS())
         else mvcView.showErrorOnToast()
     }
-    fun onRemoeClick(id : Int)
+
+    fun removeAll()
     {
-        val result =  mvcModel.removeTODOItem(id)
-        if (result)
-            mvcView.updateViewOnRemove(mvcModel.getAllTODOS())
+        val result = mvcModel.removeAll()
+        if (result) mvcView.showAllTODOLIST(ArrayList(mvcModel.getAllTODOS()))
         else mvcView.showErrorOnToast()
     }
-    fun onModifyClick(id : Int , newTodoItem : String)
-    {
-        val result =  mvcModel.modifyTODOItem(id , newTodoItem)
-        if (result) mvcView.updateViewOnUpdate(mvcModel.getAllTODOS())
-        else mvcView.showErrorOnToast()
-    }
+
 }

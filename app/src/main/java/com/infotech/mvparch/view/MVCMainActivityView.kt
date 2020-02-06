@@ -7,7 +7,5 @@ interface MVCMainActivityView : MVCView {
     fun bindDataToView()
     fun showAllTODOLIST(todoList : ArrayList<ToDo>)
     fun updateViewOnAdd(todoList : ArrayList<ToDo>)
-    fun updateViewOnRemove(todoList : ArrayList<ToDo>)
-    fun updateViewOnUpdate(todoList : ArrayList<ToDo>)
     fun showErrorOnToast()
 }

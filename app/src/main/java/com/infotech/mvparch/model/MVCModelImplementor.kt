@@ -21,6 +21,10 @@ class MVCModelImplementor(toDoListDBAdapter: ToDoListDBAdapter) : MVCModel {
         return listTodo
     }
 
+    override fun getSelectedTODOItem(id: Int): ToDo {
+        return todoListDBAdapter.getSelectedToDo(id)
+    }
+
     override fun addTODOItem(toDoItem: String, place: String): Boolean {
         val isSuccess = todoListDBAdapter.insert(toDoItem , place)
         if (isSuccess) refresh()
@@ -38,6 +42,14 @@ class MVCModelImplementor(toDoListDBAdapter: ToDoListDBAdapter) : MVCModel {
         val isSuccess = todoListDBAdapter.modify(id , newTodoItem)
         if (isSuccess) refresh()
         return isSuccess
+    }
+
+    override fun removeAll() : Boolean{
+        val isSuccess = todoListDBAdapter.deleteAll()
+        if (isSuccess) refresh()
+
+        return isSuccess
+
     }
 
 

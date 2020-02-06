@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_overlay"
+    tools:context=".ModifyListActivity">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            android:id="@+id/buttonRemoveToDo"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/buttonModifyToDo"
+            android:layout_below="@id/buttonModifyToDo"
+            android:layout_alignParentLeft="true"
+            android:inputType="text"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:id="@+id/editTextNewToDo"
+            android:hint="Modify ToDo" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modify"
+        android:layout_below="@+id/buttonRemoveToDo"
+        android:id="@+id/buttonModifyToDo"
+        android:layout_alignParentRight="true"/>
+
+
+    <TextView
+        android:id="@+id/listOfItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/editTextNewToDo"
+        />
+
+</RelativeLayout>

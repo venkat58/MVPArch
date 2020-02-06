@@ -63,6 +63,10 @@ class ToDoListDBAdapter(context: Context) {
         return sqLliteDatabase!!.delete(TABLE_TODO, "$COLUMN_TODO_ID = $taskId", null) > 0
     }
 
+    fun deleteAll(): Boolean {
+        return sqLliteDatabase!!.delete(TABLE_TODO, null, null) > 0
+    }
+
     fun modify(taskId: Int, newToDoItem: String?): Boolean {
         val contentValues = ContentValues()
         contentValues.put(COLUMN_TODO, newToDoItem)
@@ -83,7 +87,7 @@ class ToDoListDBAdapter(context: Context) {
             null,
             null,
             null,
-            null,
+            "$COLUMN_TODO DESC",
             null
         )
 
@@ -96,6 +100,35 @@ class ToDoListDBAdapter(context: Context) {
 
         cursor.close()
         return toDoList
+    }
+
+    fun getSelectedToDo(id : Int): ToDo
+    {
+        Log.d("venkat", id.toString())
+        val selection: String = COLUMN_TODO_ID + " = ?"
+
+        var toDoList:  ToDo? = null
+        val cursor: Cursor = sqLliteDatabase!!.query(
+            TABLE_TODO,
+            arrayOf(COLUMN_TODO_ID, COLUMN_TODO, COLUMN_PLACE),
+            selection,
+            arrayOf(id.toString()),
+            null,
+            null,
+            null,
+            null
+        )
+
+        if ( cursor.getCount() > 0 ) {
+            while (cursor.moveToNext()) {
+                val toDo = ToDo(cursor.getLong(0), cursor.getString(1), cursor.getString(2))
+                toDoList = toDo
+            }
+        }
+
+        cursor.close()
+        return toDoList!!
+
     }
 
     private inner class ToDoListDBHelper(

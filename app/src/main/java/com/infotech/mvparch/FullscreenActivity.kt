@@ -7,7 +7,10 @@ import com.infotech.mvparch.view.MainActivityViewImplementor
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
+ *
+ * after this example we have to check this  https://github.com/ankitbisht/trending-git.git
  */
+
 class FullscreenActivity : AppCompatActivity()  {
 
     /*@BindView(R.id.mEdittext)
@@ -21,7 +24,7 @@ class FullscreenActivity : AppCompatActivity()  {
 //        setContentView(R.layout.activity_fullscreen)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mvcView = MainActivityViewImplementor(this , null)
-        setContentView(mvcView.getRootView())
+        setContentView(mvcView.getRootViewOfActivity())
         mvcView.initViews()
     }
 
